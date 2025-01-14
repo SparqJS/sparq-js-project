@@ -57,7 +57,7 @@ Download the `sparq.js` file from the repository and include it in your project:
 Include Sparq.js directly in your project via the CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SparqJS/sparq-js-project@main/sparq.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SparqJS/sparq-js-project@refs/heads/main/sparq.js"></script>
 ```
 
 ## Usage
