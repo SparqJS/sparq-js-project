@@ -586,6 +586,139 @@
           this.router.init();
         }
       },
+
+      /***********************************************************************
+ * [EXTRA] 7 FUNCIONES AVANZADAS, 100% FUNCIONALES EN JS PURO
+ ***********************************************************************/
+
+/**
+ * Genera un ID único (UID) basado en timestamp y random.
+ * @param {string} [prefix='id'] - Prefijo opcional.
+ * @returns {string} - ID único.
+ */
+generateUID(prefix = 'id') {
+    const rand = Math.random().toString(36).substring(2, 9);
+    return `${prefix}-${Date.now()}-${rand}`;
+  },
+  
+  /**
+   * Manejo completo de cookies (set, get, delete).
+   * @namespace Sparq.cookies
+   */
+  cookies: {
+    /**
+     * Crea o actualiza una cookie con un tiempo de expiración.
+     * @param {string} name - Nombre de la cookie.
+     * @param {string} value - Valor de la cookie.
+     * @param {number} [days=7] - Días hasta que expire la cookie.
+     */
+    set(name, value, days = 7) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + d.toUTCString();
+      document.cookie = `${name}=${value};${expires};path=/`;
+    },
+    /**
+     * Obtiene el valor de una cookie.
+     * @param {string} name - Nombre de la cookie.
+     * @returns {string|null} - Valor de la cookie o null si no existe.
+     */
+    get(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    },
+    /**
+     * Elimina una cookie estableciendo un tiempo de vida negativo.
+     * @param {string} name - Nombre de la cookie.
+     */
+    delete(name) {
+      this.set(name, '', -1);
+    }
+  },
+  
+  /**
+   * Valida formularios con reglas personalizadas.
+   * @param {string} formId - ID del formulario en el DOM.
+   * @param {Array} rules - Reglas de validación [{ field, rule(value), message }].
+   * @returns {Array|boolean} - true si todo OK, o array de errores.
+   */
+  validateForm(formId, rules) {
+    const form = document.getElementById(formId);
+    if (!form) {
+      console.error("validateForm error: form not found.");
+      return false;
+    }
+    const errors = [];
+    rules.forEach(({ field, rule, message }) => {
+      const input = form[field];
+      if (!input) {
+        errors.push({ field, message: `Field "${field}" not found.` });
+        return;
+      }
+      const value = input.value.trim();
+      if (!rule(value)) {
+        errors.push({ field, message });
+      }
+    });
+    return errors.length ? errors : true;
+  },
+  
+  /**
+   * Detecta si el usuario navega desde un dispositivo móvil.
+   * @returns {boolean} - true si es móvil, false si es desktop.
+   */
+  isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  },
+  
+  /**
+   * Copia texto al portapapeles usando la API nativa.
+   * @param {string} text - Texto a copiar.
+   * @returns {Promise<void>}
+   */
+  copyToClipboard(text) {
+    if (!navigator.clipboard) {
+      // Fallback: crear textarea oculto
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.error('copyToClipboard fallback error:', err);
+      }
+      document.body.removeChild(temp);
+      return Promise.resolve();
+    } else {
+      return navigator.clipboard.writeText(text);
+    }
+  },
+  
+  /**
+   * Obtiene parámetros GET de la URL (ej. ?foo=bar&test=123) en un objeto.
+   * @returns {Object} - Objeto con clave=valor de los params.
+   */
+  getUrlParams() {
+    const params = {};
+    const queryString = window.location.search.slice(1); 
+    if (!queryString) return params;
+    queryString.split("&").forEach(pair => {
+      const [key, val] = pair.split("=");
+      params[decodeURIComponent(key)] = decodeURIComponent(val || "");
+    });
+    return params;
+  },
+  
+  /**
+   * Espera un tiempo (ms) antes de resolver la Promesa.
+   * @param {number} ms - Milisegundos a esperar.
+   * @returns {Promise<void>}
+   */
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
+  
   
       /* ============================================================
          ============== [NUEVO #10] EJEMPLO: EVENT BUS ==============
