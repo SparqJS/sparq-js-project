@@ -112,6 +112,14 @@ Include Sparq.js directly in your project via the CDN:
 
 Check out the [examples folder](https://github.com/SparqJS/sparq-js-project/tree/main/examples) in the repository for detailed usage examples and interactive demos.
 
+## Live Demo
+
+Visit our [Live Demo](https://glittering-blancmange-0b53f0.netlify.app/) to see Sparq.js in action!
+
+## Documentation
+
+For detailed documentation, please read our [Full Documentation](https://glittering-blancmange-0b53f0.netlify.app/doc).
+
 ## Contributing
 
 Contributions are welcome! If you find a bug or have a suggestion, please open an issue or submit a pull request. Make sure your contributions align with the project's coding standards.
