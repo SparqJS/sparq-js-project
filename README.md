@@ -1,16 +1,48 @@
 # Sparq.js
 
-**Sparq.js** is a lightweight JavaScript utility library designed to simplify common development tasks in modern web projects. It offers advanced features like code formatting, minification, file management, image compression, and more, all in a single, dependency-free file.
+**Sparq.js** is a lightweight, dependency-free, native JavaScript framework designed to accelerate and simplify modern web development. It combines a rich set of features into a single file so that you can build fast, static websites without the overhead of external libraries.
+
+> **Note:** Although the core code internally reflects advanced functionalities (version 3.1 Ultimate Complete), this public release is presented as the initial version of the framework.
 
 ## Features
 
-- **Code Formatting and Minification**: Format and minify JavaScript code directly in the browser.
-- **File Management**: Read and parse CSV/JSON files with ease.
-- **Image Compression**: Compress images on the client-side with adjustable quality and scaling.
-- **Theme Switching**: Toggle between light and dark themes dynamically.
-- **Hash-based Router**: Create single-page application (SPA) routes with hash navigation.
-- **Event Bus**: Publish and subscribe to custom events efficiently.
-- **In-memory Database**: Store and manage temporary data in a lightweight, session-based memory structure.
+Sparq.js offers a modular architecture based on **12 key modules**:
+
+1. **Module Registration**  
+   A robust system to register and extend your application with custom modules.
+
+2. **Components with Lifecycle**  
+   Create reusable UI components with lifecycle hooks (`onInit`, `afterRender`, `onPropsChange`, `onDestroy`) for efficient DOM management.
+
+3. **Reactive State Management**  
+   Manage your app's state using a Proxy that automatically updates all subscribed components when changes occur.
+
+4. **Routing Module (Hash & History)**  
+   Define dynamic routes with support for parameters. Easily build single-page applications (SPAs) with hash- or history-based navigation.
+
+5. **Dynamic Themes**  
+   Quickly switch between themes by toggling CSS variables—no need for multiple stylesheets.
+
+6. **Utilities Module**  
+   Comes with built-in helper functions for HTTP requests (fetch), debounce, clipboard operations, and more.
+
+7. **Advanced Animations**  
+   Implement smooth visual effects such as fade, slide, scale, and rotate to enhance the user experience.
+
+8. **Testing Module**  
+   Run synchronous or asynchronous tests with built-in assertions to ensure your code's quality.
+
+9. **Documentation Generator (docGen)**  
+   Automatically extract and generate documentation from code comments, helping you maintain up-to-date technical docs.
+
+10. **Events Module (Pub/Sub)**  
+    Create a simple event bus system to enable inter-module communication via custom events.
+
+11. **Storage Module**  
+    Simplify the management of persistent data using APIs for `localStorage` or `sessionStorage`.
+
+12. **Internationalization (i18n)**  
+    Support multiple languages by easily adding translation phrases and switching locales on the fly.
 
 ## Installation
 
@@ -22,63 +54,67 @@ Download the `sparq.js` file from the repository and include it in your project:
 ```
 
 ### Option 2: Direct CDN Link
-Use the CDN JSDELIVR link to include Sparq.js directly in your project:
+Include Sparq.js directly in your project via the CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/SparqJS/sparq-js-project@main/sparq.js"></script>
 ```
 
-
 ## Usage
 
 1. **Include Sparq.js in your project**
+
+   Simply add the script to your HTML:
+
    ```html
    <script src="sparq.js"></script>
    ```
 
-2. **Initialize Sparq.js**
-   Optionally, you can initialize Sparq.js with configurations:
+2. **Initialize Sparq.js (Optional)**  
+   You can configure Sparq.js by initializing it with your desired settings:
+
    ```javascript
    Sparq.init({
-     theme: "light", // Set initial theme
-     router: true     // Enable hash-based routing
+     theme: "light", // Set the initial theme
+     router: true    // Enable hash-based routing
    });
    ```
 
-3. **Use the provided utilities**
-   Explore the features by calling Sparq.js methods:
+3. **Utilize the Framework Modules**  
+   Explore and combine the functionalities by invoking Sparq.js methods:
 
    ```javascript
    // Toggle between light and dark themes
    Sparq.toggleTheme("dark");
 
-   // Format JavaScript code
+   // Format JavaScript code for readability
    const formattedCode = Sparq.formatCode("function test(){console.log('hello');}");
    console.log(formattedCode);
 
-   // Minify JavaScript code
+   // Minify the formatted code
    const minifiedCode = Sparq.minifyCode(formattedCode);
    console.log(minifiedCode);
 
-   // Read a file (e.g., CSV or JSON)
+   // Read and parse a file (CSV or JSON)
    const fileInput = document.getElementById("fileInput");
    Sparq.readFileAdvanced(fileInput.files[0]).then(content => console.log(content));
 
-   // Compress an image
+   // Compress an image with specified quality and scale
    const imageInput = document.getElementById("imageInput");
-   Sparq.compressImage(imageInput.files[0], { quality: 0.7, scale: 0.5 }).then(blob => {
-     const url = URL.createObjectURL(blob);
-     console.log("Compressed image URL:", url);
-   });
+   Sparq.compressImage(imageInput.files[0], { quality: 0.7, scale: 0.5 })
+     .then(blob => {
+       const url = URL.createObjectURL(blob);
+       console.log("Compressed image URL:", url);
+     });
    ```
 
 ## Examples
 
-Visit the [examples folder](https://github.com/SparqJS/sparq-js-project/tree/main/examples) in the repository to see detailed usage examples and interactive demos.
+Check out the [examples folder](https://github.com/SparqJS/sparq-js-project/tree/main/examples) in the repository for detailed usage examples and interactive demos.
 
 ## Contributing
 
-Contributions are welcome! If you find a bug or have a suggestion, please open an issue or submit a pull request. Ensure your code adheres to the project's coding standards.
+Contributions are welcome! If you find a bug or have a suggestion, please open an issue or submit a pull request. Make sure your contributions align with the project's coding standards.
 
 ## License
 
