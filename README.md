@@ -28,7 +28,6 @@ Use the CDN JSDELIVR link to include Sparq.js directly in your project:
 <script src="https://cdn.jsdelivr.net/gh/SparqJS/sparq-js-project@main/sparq.js"></script>
 ```
 
-> **Note:** Using the raw link from GitHub is not recommended for production environments. For better performance and reliability, consider hosting the file on a CDN or your own server.
 
 ## Usage
 
