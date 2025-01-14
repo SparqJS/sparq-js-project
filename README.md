@@ -25,7 +25,7 @@ Download the `sparq.js` file from the repository and include it in your project:
 Use the raw link from the repository to include Sparq.js directly in your project:
 
 ```html
-<script src="https://raw.githubusercontent.com/SparqJS/sparq-js-project/main/sparq.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SparqJS/sparq-js-project@main/sparq.js"></script>
 ```
 
 > **Note:** Using the raw link from GitHub is not recommended for production environments. For better performance and reliability, consider hosting the file on a CDN or your own server.
