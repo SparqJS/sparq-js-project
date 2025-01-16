@@ -1,5 +1,4 @@
 
-```md
 # Sparq.js
 
 **Sparq.js** is a lightweight, dependency-free, native JavaScript framework designed to accelerate and simplify modern web development. It combines a rich set of features into a single file so you can build fast, static websites without the overhead of external libraries.
