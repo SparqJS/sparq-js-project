@@ -139,7 +139,7 @@ Explore the [examples folder](https://github.com/SparqJS/sparq-js-project/tree/m
 
 ## Our Website
 
-Visit our [Official Website](https://glittering-blancmange-0b53f0.netlify.app/) to learn more about Sparq.js!
+Visit our Official Website - https://sparqjs.space/ to learn more about Sparq.js!
 
 ## Documentation
 
